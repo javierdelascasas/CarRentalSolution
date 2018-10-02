@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/CRSolution.css" th:href="'/css/CRSolution.css'" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRSolution</title>
+</head>
+
+<body>
+    <section id="loadBg" class="myHidden">
+        <div id="loadSpinner"></div>
+    </section>
+    <header id="header">
+        <i class="fas fa-car"></i>
+        <h1>CAR RENTAL</h1>
+        <button id="buttonCRSPortal" class="pure-button pure-button-primary">
+            CRS Portal
+        </button>
+    </header>
+
+    <form id="formSearchCar" class="pure-form">
+        <select id="selectCarType">
+            <option value="-1" disabled selected>Select a car type</option>
+            <option th:each="carType : ${carTypes}" th:value="${carType.getCarCategoryID()}" th:text="${carType.getCarCategoryName()}"></option>
+        </select>
+        <select id="selectLocation">
+            <option value="-1" disabled selected>Select a location</option>
+            <option th:each="location : ${locations}" th:value="${location.getLocation_ID()}" th:text="${location.toString()}"></option>
+        </select>
+        <input id="inputFromDate" type="date" />
+        <input id="inputFromTime" type="time" step="900" />
+        <button id="fromIcon" class="pure-button pure-button-disabled">
+            <i class="far fa-clock"></i>
+        </button>
+        <input id="inputToDate" type="date" hidden/>
+        <input id="inputToTime" type="time" step="900" hidden/>
+        <button id=toIcon class="pure-button pure-button-disabled" hidden>
+            <i class="fas fa-arrow-circle-left"></i>
+        </button>
+        <button id="buttonSearchCar" type="button" class="pure-button pure-button-primary">
+            <i class="fas fa-search"></i>
+            Search
+        </button>
+    </form>
+
+    <section id="carList"></section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="/static/js/CRSolution.js" th:src="'/js/CRSolution.js'"></script>
+</body>
+
+</html>

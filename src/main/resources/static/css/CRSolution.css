@@ -1,0 +1,204 @@
+body {
+    /* background-color: rgba(40, 40, 40, 1); */
+    display: grid;
+    grid-template-columns: auto minmax(auto, 900px) auto;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
+    grid-template-areas: 
+            ". header ." 
+            ". form ."
+            ". list .";
+}
+
+.myHidden {
+    display: none;
+}
+
+#loadBg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    z-index: 100;
+}
+
+#loadSpinner {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-top: 2px solid rgba(0,120,231,1);
+    border-right: 2px solid transparent;
+}
+
+.spinning {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas: "logo title . CRSbutton";
+    background-color: rgba(40, 40, 40, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+#header i {
+    grid-area: logo;
+    align-self: center;
+    justify-self: center;
+    font-size: 3em;
+}
+
+#header h1 {
+    grid-area: title;
+    align-self: center;
+}
+
+#header button {
+    grid-area: CRSbutton;
+    align-self: center;
+    justify-self: center;
+}
+
+#formSearchCar {
+    grid-area: form;
+    display: grid;
+    grid-template-columns: auto 2fr 1fr 1fr 1fr 1fr 1fr 1fr auto;
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas: ". fromDate fromTime fromIcon carType carType location location ." ". toDate toTime toIcon . . searchButton searchButton .";
+}
+
+#selectCarType {
+    grid-area: carType;
+}
+
+#selectLocation {
+    grid-area: location;
+}
+
+#inputFromDate {
+    grid-area: fromDate;
+}
+
+#inputFromTime {
+    grid-area: fromTime;
+}
+
+#fromIcon {
+    grid-area: fromIcon;
+}
+
+#inputToDate {
+    grid-area: toDate;
+}
+
+#inputToTime {
+    grid-area: toTime;
+}
+
+#toIcon {
+    grid-area: toIcon;
+}
+
+#buttonSearchCar {
+    grid-area: searchButton;
+}
+
+#carList {
+    grid-area: list;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
+}
+
+.carItemForm {
+    display: block;
+    position: relative;
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.carItem {
+    width: 100%;
+    background-color: whitesmoke;
+    /* overflow-x: hidden; */
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
+    grid-template-rows: auto 1fr 1fr 2fr auto;;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+            ". . . . . ."
+            ". img img . button ."
+            ". img img . . ."
+            ". carBrand carModel carYear carMilage ."
+            ". . . . . .";
+    /* transform: scale(0.95, 0.95); */
+    transition: all 0.2s ease-out;
+}
+
+.carItemForm p {
+    text-align: center;
+}
+
+.carItem img {
+    width: 25%;
+    justify-self: center;
+}
+
+.carItem button {
+    background: rgba(28, 184, 65, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.carItemForm2 {
+    display: block;
+    position: absolute;
+    background-color: whitesmoke;
+    left: 110%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    transition: all 0.2s linear;
+    display: grid;
+    grid-template-columns: 10px 1fr 1fr 1fr 1fr auto;
+    grid-template-rows: auto 1fr 1fr 2fr auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+            "tab . . . . ."
+            "tab birthDate fName lName button ."
+            "tab . phone email . ."
+            "tab carBrand carModel carYear . ."
+            "tab . . . . .";
+}
+
+.selectedCarItem {
+    left: 0%;
+}
+
+.carItemForm2Tab {
+    background-color: rgba(0,120,231,1);
+}
